@@ -20,14 +20,14 @@
 #define X_STEP_PIN         16
 #define X_DIR_PIN          17
 #define X_ENABLE_PIN       -1
-#define X_MIN_PIN          24
-#define X_MAX_PIN          25
+#define X_MIN_PIN          25
+#define X_MAX_PIN          24
 
 #define Y_STEP_PIN         18
 #define Y_DIR_PIN          19
 #define Y_ENABLE_PIN       -1
-#define Y_MIN_PIN          26
-#define Y_MAX_PIN          27
+#define Y_MIN_PIN          27
+#define Y_MAX_PIN          26
 
 #define Z_STEP_PIN         20
 #define Z_DIR_PIN          21
@@ -78,7 +78,7 @@
 #define TEMP_BED_PIN        1   // ANALOG NUMBERING
 
 #ifdef NUM_SERVOS
-  #define SERVO0_PIN         11
+  #define SERVO0_PIN         29
   #if NUM_SERVOS > 1
     #define SERVO1_PIN        6
     #if NUM_SERVOS > 2

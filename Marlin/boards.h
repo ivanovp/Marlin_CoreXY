@@ -53,6 +53,7 @@
 #define BOARD_HEPHESTOS         42   // bq Prusa i3 Hephestos
 #define BOARD_BAM_DICE          401  // 2PrintBeta BAM&DICE with STK drivers
 #define BOARD_BAM_DICE_DUE      402  // 2PrintBeta BAM&DICE Due with STK drivers
+#define BOARD_CUSTOM            9999 // 2PrintBeta BAM&DICE Due with STK drivers
 
 #define BOARD_99                99   // This is in pins.h but...?
 
