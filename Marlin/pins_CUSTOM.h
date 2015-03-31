@@ -58,7 +58,7 @@
 #define FILWIDTH_PIN       -1
 #define FILRUNOUT_PIN      -1
 
-#define FAN_PIN            5
+#define FAN_PIN            3
 #define CONTROLLERFAN_PIN  -1 // Pin used for the fan to cool controller
 
 #define PS_ON_PIN          -1
