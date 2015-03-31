@@ -352,12 +352,12 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 #define max_software_endstops true  // If true, axis won't move to coordinates greater than the defined lengths below.
 
 // Travel limits after homing (units are in mm)
-//#define X_MIN_POS -20
-//#define Y_MIN_POS -20
-//#define Z_MIN_POS -20
+#define X_MIN_POS 0
+#define Y_MIN_POS 0
+#define Z_MIN_POS 0
 #define X_MAX_POS 240
 #define Y_MAX_POS 285
-//#define Z_MAX_POS 290
+#define Z_MAX_POS 290
 
 //===========================================================================
 //============================= Filament Runout Sensor ======================
@@ -414,14 +414,14 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 
     #define LEFT_PROBE_BED_POSITION 75
     #define RIGHT_PROBE_BED_POSITION 220
-    #define FRONT_PROBE_BED_POSITION 250
-    #define BACK_PROBE_BED_POSITION 20
+    #define FRONT_PROBE_BED_POSITION 20
+    #define BACK_PROBE_BED_POSITION 250
     
     #define MIN_PROBE_EDGE 10 // The probe square sides can be no smaller than this
 
     // Set the number of grid points per dimension
     // You probably don't need more than 3 (squared=9)
-    #define AUTO_BED_LEVELING_GRID_POINTS 2
+    #define AUTO_BED_LEVELING_GRID_POINTS 3
 
 
   #else  // !AUTO_BED_LEVELING_GRID
@@ -441,7 +441,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
   // Offsets to the probe relative to the extruder tip (Hotend - Probe)
   // X and Y offsets must be integers
   #define X_PROBE_OFFSET_FROM_EXTRUDER 70     // Probe on: -left  +right
-  #define Y_PROBE_OFFSET_FROM_EXTRUDER 17.9     // Probe on: -front +behind
+  #define Y_PROBE_OFFSET_FROM_EXTRUDER 18     // Probe on: -front +behind
   #define Z_PROBE_OFFSET_FROM_EXTRUDER -6.3  // -below (always!)
 
   #define Z_RAISE_BEFORE_HOMING 4       // (in mm) Raise Z before homing (G28) for Probe Clearance.
