@@ -412,10 +412,10 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 
   #ifdef AUTO_BED_LEVELING_GRID
 
-    #define LEFT_PROBE_BED_POSITION 75
-    #define RIGHT_PROBE_BED_POSITION 220
+    #define LEFT_PROBE_BED_POSITION 70
+    #define RIGHT_PROBE_BED_POSITION 240
     #define FRONT_PROBE_BED_POSITION 20
-    #define BACK_PROBE_BED_POSITION 250
+    #define BACK_PROBE_BED_POSITION 285
     
     #define MIN_PROBE_EDGE 10 // The probe square sides can be no smaller than this
 
@@ -442,7 +442,7 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
   // X and Y offsets must be integers
   #define X_PROBE_OFFSET_FROM_EXTRUDER 70     // Probe on: -left  +right
   #define Y_PROBE_OFFSET_FROM_EXTRUDER 18     // Probe on: -front +behind
-  #define Z_PROBE_OFFSET_FROM_EXTRUDER -6.2  // -below (always!)
+  #define Z_PROBE_OFFSET_FROM_EXTRUDER -6.3  // -below (always!)
 
   #define Z_RAISE_BEFORE_HOMING 4       // (in mm) Raise Z before homing (G28) for Probe Clearance.
                                         // Be sure you have this distance over your Z_MAX_POS in case
@@ -501,11 +501,11 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 
 //// MOVEMENT SETTINGS
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
-#define HOMING_FEEDRATE {50*60, 25*60, 4*60, 0}  // set the homing speeds (mm/min)
+#define HOMING_FEEDRATE {50*60, 30*60, 4*60, 0}  // set the homing speeds (mm/min)
 
 // default settings
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {6302/1000.0,4731*2/1000.0,160*2,44120/1000.0}  // default steps per unit for Ultimaker
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {5630/1000.0,8380/1000.0,160*2,46975/1000.0}  // default steps per unit for Ultimaker
 #define DEFAULT_MAX_FEEDRATE          {80, 60, 5, 5}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {400,400,10,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 
