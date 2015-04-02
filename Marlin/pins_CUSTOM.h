@@ -1,12 +1,6 @@
 /**
  * Arduino Mega with CUSTOM pin assignments
  *
- * Applies to the following boards:
- *
- *  RAMPS_13_EFB (Extruder, Fan, Bed)
- *  RAMPS_13_EEB (Extruder, Extruder, Bed)
- *  RAMPS_13_EFF (Extruder, Fan, Fan)
- *  RAMPS_13_EEF (Extruder, Extruder, Fan)
  *
  *  Other pins_MYBOARD.h files may override these defaults
  */
