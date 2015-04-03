@@ -256,9 +256,6 @@ static void _draw_heater_status(int x, int heater) {
 }
 
 static void lcd_implementation_status_screen() {
-
-  static unsigned char fan_rot = 0;
- 
   u8g.setColorIndex(1); // black on white
 
   // Symbols menu graphics, animated fan
@@ -372,7 +369,7 @@ static void lcd_implementation_status_screen() {
       lcd_printPGM(PSTR("dia:"));
       lcd_print(ftostr12ns(filament_width_meas));
       lcd_printPGM(PSTR(" factor:"));
-      lcd_print(itostr3(extrudemultiply));
+      lcd_print(itostr3(volumetric_multiplier[FILAMENT_SENSOR_EXTRUDER_NUM]));
       lcd_print('%');
     }
   #endif
@@ -485,7 +482,7 @@ static void _drawmenu_sd(bool isSelected, uint8_t row, const char* pstr, const c
   lcd_implementation_mark_as_selected(row, isSelected);
 
   if (isDir) lcd_print(LCD_STR_FOLDER[0]);
-  while (c = *filename) {
+  while ((c = *filename)) {
     n -= lcd_print(c);
     filename++;
   }
