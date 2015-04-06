@@ -306,7 +306,7 @@ your extruder heater takes 2 minutes to hit the target on heating.
 // #define COREXY
 
 // Enable this option for Toshiba steppers
-// #define CONFIG_STEPPERS_TOSHIBA
+#define CONFIG_STEPPERS_TOSHIBA
 
 // coarse Endstop Settings
 #define ENDSTOPPULLUPS // Comment this out (using // at the start of the line) to disable the endstop pullup resistors
@@ -519,7 +519,7 @@ const bool Z_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the logic
 
 
 // The position of the homing switches
-//#define MANUAL_HOME_POSITIONS  // If defined, MANUAL_*_HOME_POS below will be used
+#define MANUAL_HOME_POSITIONS  // If defined, MANUAL_*_HOME_POS below will be used
 //#define BED_CENTER_AT_0_0  // If defined, the center of the bed is at (X=0, Y=0)
 
 // Manual homing switch locations:
@@ -539,7 +539,7 @@ const bool Z_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the logic
 
 // default settings
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {5630/1000.0,8380/1000.0,160*2,46975/1000.0}  // default steps per unit for Ultimaker
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {5.63f, 8.38f, 320.0f, 46.975f }  // default steps per unit for Ultimaker
 #define DEFAULT_MAX_FEEDRATE          {80, 60, 6, 5}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {350,400,10,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 
