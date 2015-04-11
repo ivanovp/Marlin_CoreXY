@@ -400,7 +400,8 @@ const bool Z_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the logic
 #define Y_MIN_POS 0
 #define Z_MIN_POS 0
 #define X_MAX_POS 240
-#define Y_MAX_POS 285
+#define Y_MAX_POS 230 // limited
+//#define Y_MAX_POS 285
 #define Z_MAX_POS 290
 
 //===========================================================================
@@ -462,10 +463,10 @@ const bool Z_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the logic
 
   #ifdef AUTO_BED_LEVELING_GRID
 
-    #define LEFT_PROBE_BED_POSITION 70
+    #define LEFT_PROBE_BED_POSITION 100
     #define RIGHT_PROBE_BED_POSITION 240
-    #define FRONT_PROBE_BED_POSITION 20
-    #define BACK_PROBE_BED_POSITION 285
+    #define FRONT_PROBE_BED_POSITION 100
+    #define BACK_PROBE_BED_POSITION 200
     
     #define MIN_PROBE_EDGE 10 // The probe square sides can be no smaller than this
 
@@ -572,9 +573,10 @@ const bool Z_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the logic
 #define HOMING_FEEDRATE {50*60, 50*60, 4*60, 0}  // set the homing speeds (mm/min)
 
 // default settings
-
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {6.25f, 9.31f, 320.0f, 46.975f }  // default steps per unit for Ultimaker
-#define DEFAULT_MAX_FEEDRATE          {80, 60, 6, 5}    // (mm/sec)
+// Microstepping /2 for X
+// Microstepping /8 for Y
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {6.25f * 2.0f, 4.655f * 8.0f, 320.0f, 46.975f }  // default steps per unit for Ultimaker
+#define DEFAULT_MAX_FEEDRATE          {100, 80, 6, 5}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {500,400,10,10000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          500    // X, Y, Z and E acceleration in mm/s^2 for printing moves
