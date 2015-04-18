@@ -98,19 +98,13 @@ static volatile bool endstop_z_probe_hit = false; // Leaving this in even if Z_P
 #if HAS_Y_MAX
   static bool old_y_max_endstop = false;
 #endif
-#if HAS_Z_MIN
-  static bool old_z_min_endstop = false;
-#endif
-#if HAS_Z_MAX
-  static bool old_z_max_endstop = false;
-#endif
+
+static bool old_z_min_endstop = false;
+static bool old_z_max_endstop = false;
+
 #ifdef Z_DUAL_ENDSTOPS
-  // #if HAS_Z2_MIN
-    static bool old_z2_min_endstop = false;
-  // #endif
-  // #if HAS_Z2_MAX
-    static bool old_z2_max_endstop = false;
-  // #endif
+  static bool old_z2_min_endstop = false;
+  static bool old_z2_max_endstop = false;
 #endif
 
 #ifdef Z_PROBE_ENDSTOP // No need to check for valid pin, SanityCheck.h already does this.
@@ -400,7 +394,7 @@ ISR(TIMER1_COMPA_vect) {
     current_block = NULL;
     plan_discard_current_block();
     #ifdef SD_FINISHED_RELEASECOMMAND
-      if ((cleaning_buffer_counter == 1) && (SD_FINISHED_STEPPERRELEASE)) enquecommands_P(PSTR(SD_FINISHED_RELEASECOMMAND));
+      if ((cleaning_buffer_counter == 1) && (SD_FINISHED_STEPPERRELEASE)) enqueuecommands_P(PSTR(SD_FINISHED_RELEASECOMMAND));
     #endif
     cleaning_buffer_counter--;
     OCR1A = 200;
@@ -718,7 +712,7 @@ ISR(TIMER1_COMPA_vect) {
     // Calculate new timer value
     unsigned short timer;
     unsigned short step_rate;
-    if (step_events_completed <= (unsigned long int)current_block->accelerate_until) {
+    if (step_events_completed <= (unsigned long)current_block->accelerate_until) {
 
       MultiU24X24toH16(acc_step_rate, acceleration_time, current_block->acceleration_rate);
       acc_step_rate += current_block->initial_rate;
@@ -742,7 +736,7 @@ ISR(TIMER1_COMPA_vect) {
 
       #endif
     }
-    else if (step_events_completed > (unsigned long int)current_block->decelerate_after) {
+    else if (step_events_completed > (unsigned long)current_block->decelerate_after) {
       MultiU24X24toH16(step_rate, deceleration_time, current_block->acceleration_rate);
 
       if (step_rate > acc_step_rate) { // Check step_rate stays positive
@@ -1072,10 +1066,7 @@ void st_init() {
       TCCR0A &= ~BIT(WGM01);
       TCCR0A &= ~BIT(WGM00);
     #endif
-    e_steps[0] = 0;
-    e_steps[1] = 0;
-    e_steps[2] = 0;
-    e_steps[3] = 0;
+    e_steps[0] = e_steps[1] = e_steps[2] = e_steps[3] = 0;
     TIMSK0 |= BIT(OCIE0A);
   #endif //ADVANCE
 
@@ -1149,7 +1140,7 @@ void quickStop() {
         uint8_t old_pin = AXIS ##_DIR_READ; \
         AXIS ##_APPLY_DIR(INVERT_## AXIS ##_DIR^direction^INVERT, true); \
         AXIS ##_APPLY_STEP(!INVERT_## AXIS ##_STEP_PIN, true); \
-        _delay_us(1U); \
+        delayMicroseconds(2); \
         AXIS ##_APPLY_STEP(INVERT_## AXIS ##_STEP_PIN, true); \
         AXIS ##_APPLY_DIR(old_pin, true); \
       }
@@ -1188,7 +1179,7 @@ void quickStop() {
           X_STEP_WRITE(!INVERT_X_STEP_PIN);
           Y_STEP_WRITE(!INVERT_Y_STEP_PIN);
           Z_STEP_WRITE(!INVERT_Z_STEP_PIN);
-          _delay_us(1U);
+          delayMicroseconds(2);
           X_STEP_WRITE(INVERT_X_STEP_PIN); 
           Y_STEP_WRITE(INVERT_Y_STEP_PIN); 
           Z_STEP_WRITE(INVERT_Z_STEP_PIN);
