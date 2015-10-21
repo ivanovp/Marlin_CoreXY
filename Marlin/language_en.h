@@ -8,12 +8,12 @@
 #ifndef LANGUAGE_EN_H
 #define LANGUAGE_EN_H
 
-#if !( defined(MAPPER_NON)|| defined(MAPPER_C2C3)|| defined(MAPPER_D0D1)|| defined(MAPPER_D0D1_MOD)|| defined(MAPPER_E382E383) )
+#if DISABLED(MAPPER_NON) && DISABLED(MAPPER_C2C3) && DISABLED(MAPPER_D0D1) && DISABLED(MAPPER_D0D1_MOD) && DISABLED(MAPPER_E382E383)
   #define MAPPER_NON         // For direct asci codes
 #endif
 
 //#define SIMULATE_ROMFONT //Comment in to see what is seen on the character based displays
-#if !( defined(SIMULATE_ROMFONT)|| defined(DISPLAY_CHARSET_ISO10646_1)|| defined(DISPLAY_CHARSET_ISO10646_5)|| defined(DISPLAY_CHARSET_ISO10646_KANA) )
+#if DISABLED(SIMULATE_ROMFONT) && DISABLED(DISPLAY_CHARSET_ISO10646_1) && DISABLED(DISPLAY_CHARSET_ISO10646_5) && DISABLED(DISPLAY_CHARSET_ISO10646_KANA) && DISABLED(DISPLAY_CHARSET_ISO10646_CN)
   #define DISPLAY_CHARSET_ISO10646_1 // use the better font on full graphic displays.
 #endif
 
@@ -120,6 +120,18 @@
 #ifndef MSG_MOVE_E
 #define MSG_MOVE_E                          "Extruder"
 #endif
+#ifndef MSG_MOVE_E1
+#define MSG_MOVE_E1                         "1"
+#endif
+#ifndef MSG_MOVE_E2
+#define MSG_MOVE_E2                         "2"
+#endif
+#ifndef MSG_MOVE_E3
+#define MSG_MOVE_E3                         "3"
+#endif
+#ifndef MSG_MOVE_E4
+#define MSG_MOVE_E4                         "4"
+#endif
 #ifndef MSG_MOVE_01MM
 #define MSG_MOVE_01MM                       "Move 0.1mm"
 #endif
@@ -134,6 +146,9 @@
 #endif
 #ifndef MSG_NOZZLE
 #define MSG_NOZZLE                          "Nozzle"
+#endif
+#ifndef MSG_N1
+#define MSG_N1                              " 1"
 #endif
 #ifndef MSG_N2
 #define MSG_N2                              " 2"
@@ -153,29 +168,17 @@
 #ifndef MSG_FLOW
 #define MSG_FLOW                            "Flow"
 #endif
-#ifndef MSG_F0
-#define MSG_F0                              " 0"
-#endif
-#ifndef MSG_F1
-#define MSG_F1                              " 1"
-#endif
-#ifndef MSG_F2
-#define MSG_F2                              " 2"
-#endif
-#ifndef MSG_F3
-#define MSG_F3                              " 3"
-#endif
 #ifndef MSG_CONTROL
 #define MSG_CONTROL                         "Control"
 #endif
 #ifndef MSG_MIN
-#define MSG_MIN                             " "LCD_STR_THERMOMETER " Min"
+#define MSG_MIN                             " " LCD_STR_THERMOMETER " Min"
 #endif
 #ifndef MSG_MAX
-#define MSG_MAX                             " "LCD_STR_THERMOMETER " Max"
+#define MSG_MAX                             " " LCD_STR_THERMOMETER " Max"
 #endif
 #ifndef MSG_FACTOR
-#define MSG_FACTOR                          " "LCD_STR_THERMOMETER " Fact"
+#define MSG_FACTOR                          " " LCD_STR_THERMOMETER " Fact"
 #endif
 #ifndef MSG_AUTOTEMP
 #define MSG_AUTOTEMP                        "Autotemp"
@@ -197,6 +200,9 @@
 #endif
 #ifndef MSG_PID_C
 #define MSG_PID_C                           "PID-C"
+#endif
+#ifndef MSG_E1
+#define MSG_E1                              " E1"
 #endif
 #ifndef MSG_E2
 #define MSG_E2                              " E2"
@@ -273,17 +279,20 @@
 #ifndef MSG_VOLUMETRIC_ENABLED
 #define MSG_VOLUMETRIC_ENABLED              "E in mm3"
 #endif
-#ifndef MSG_FILAMENT_SIZE_EXTRUDER_0
-#define MSG_FILAMENT_SIZE_EXTRUDER_0        "Fil. Dia. 1"
+#ifndef MSG_FILAMENT_DIAM
+#define MSG_FILAMENT_DIAM                   "Fil. Dia."
 #endif
-#ifndef MSG_FILAMENT_SIZE_EXTRUDER_1
-#define MSG_FILAMENT_SIZE_EXTRUDER_1        "Fil. Dia. 2"
+#ifndef MSG_DIAM_E1
+#define MSG_DIAM_E1                         " 1"
 #endif
-#ifndef MSG_FILAMENT_SIZE_EXTRUDER_2
-#define MSG_FILAMENT_SIZE_EXTRUDER_2        "Fil. Dia. 3"
+#ifndef MSG_DIAM_E2
+#define MSG_DIAM_E2                         " 2"
 #endif
-#ifndef MSG_FILAMENT_SIZE_EXTRUDER_3
-#define MSG_FILAMENT_SIZE_EXTRUDER_3        "Fil. Dia. 4"
+#ifndef MSG_DIAM_E3
+#define MSG_DIAM_E3                         " 3"
+#endif
+#ifndef MSG_DIAM_E4
+#define MSG_DIAM_E4                         " 4"
 #endif
 #ifndef MSG_CONTRAST
 #define MSG_CONTRAST                        "LCD contrast"
@@ -417,14 +426,29 @@
 #ifndef MSG_ERR_MAXTEMP_BED
 #define MSG_ERR_MAXTEMP_BED                 "Err: MAXTEMP BED"
 #endif
+#ifndef MSG_ERR_MINTEMP_BED
+#define MSG_ERR_MINTEMP_BED                 "Err: MINTEMP BED"
+#endif
 #ifndef MSG_END_HOUR
 #define MSG_END_HOUR                        "hours"
 #endif
 #ifndef MSG_END_MINUTE
 #define MSG_END_MINUTE                      "minutes"
 #endif
+#ifndef MSG_HEATING
+#define MSG_HEATING                         "Heating..."
+#endif
+#ifndef MSG_HEATING_COMPLETE
+#define MSG_HEATING_COMPLETE                "Heating done."
+#endif
+#ifndef MSG_BED_HEATING
+#define MSG_BED_HEATING                     "Bed Heating."
+#endif
+#ifndef MSG_BED_DONE
+#define MSG_BED_DONE                        "Bed done."
+#endif
 
-#ifdef DELTA_CALIBRATION_MENU
+#if ENABLED(DELTA_CALIBRATION_MENU)
   #ifndef MSG_DELTA_CALIBRATE
   #define MSG_DELTA_CALIBRATE             "Delta Calibration"
   #endif

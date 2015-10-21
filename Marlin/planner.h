@@ -37,7 +37,7 @@ typedef struct {
   long acceleration_rate;                   // The acceleration rate used for acceleration calculation
   unsigned char direction_bits;             // The direction bit set for this block (refers to *_DIRECTION_BIT in config.h)
   unsigned char active_extruder;            // Selects the active extruder
-  #ifdef ADVANCE
+  #if ENABLED(ADVANCE)
     long advance_rate;
     volatile long initial_advance;
     volatile long final_advance;
@@ -60,7 +60,7 @@ typedef struct {
   unsigned long final_rate;                          // The minimal rate at exit
   unsigned long acceleration_st;                     // acceleration steps/sec^2
   unsigned long fan_speed;
-  #ifdef BARICUDA
+  #if ENABLED(BARICUDA)
     unsigned long valve_pressure;
     unsigned long e_to_p_pressure;
   #endif
@@ -79,9 +79,9 @@ extern volatile unsigned char block_buffer_head;
 extern volatile unsigned char block_buffer_tail;
 FORCE_INLINE uint8_t movesplanned() { return BLOCK_MOD(block_buffer_head - block_buffer_tail + BLOCK_BUFFER_SIZE); }
 
-#if defined(ENABLE_AUTO_BED_LEVELING) || defined(MESH_BED_LEVELING)
+#if ENABLED(AUTO_BED_LEVELING_FEATURE) || ENABLED(MESH_BED_LEVELING)
 
-  #if defined(ENABLE_AUTO_BED_LEVELING)
+  #if ENABLED(AUTO_BED_LEVELING_FEATURE)
     #include "vector_3.h"
 
     // Transform required to compensate for bed level
@@ -91,13 +91,13 @@ FORCE_INLINE uint8_t movesplanned() { return BLOCK_MOD(block_buffer_head - block
      * Get the position applying the bed level matrix
      */
     vector_3 plan_get_position();
-  #endif  // ENABLE_AUTO_BED_LEVELING
+  #endif  // AUTO_BED_LEVELING_FEATURE
 
   /**
    * Add a new linear movement to the buffer. x, y, z are the signed, absolute target position in
    * millimeters. Feed rate specifies the (target) speed of the motion.
    */
-  void plan_buffer_line(float x, float y, float z, const float &e, float feed_rate, const uint8_t &extruder);
+  void plan_buffer_line(float x, float y, float z, const float &e, float feed_rate, const uint8_t extruder);
 
   /**
    * Set the planner positions. Used for G92 instructions.
@@ -108,28 +108,32 @@ FORCE_INLINE uint8_t movesplanned() { return BLOCK_MOD(block_buffer_head - block
 
 #else
 
-  void plan_buffer_line(const float &x, const float &y, const float &z, const float &e, float feed_rate, const uint8_t &extruder);
+  void plan_buffer_line(const float &x, const float &y, const float &z, const float &e, float feed_rate, const uint8_t extruder);
   void plan_set_position(const float &x, const float &y, const float &z, const float &e);
 
-#endif // ENABLE_AUTO_BED_LEVELING || MESH_BED_LEVELING
+#endif // AUTO_BED_LEVELING_FEATURE || MESH_BED_LEVELING
 
 void plan_set_e_position(const float &e);
 
+//===========================================================================
+//============================= public variables ============================
+//===========================================================================
+
 extern millis_t minsegmenttime;
-extern float max_feedrate[NUM_AXIS]; // set the max speeds
+extern float max_feedrate[NUM_AXIS]; // Max speeds in mm per minute
 extern float axis_steps_per_unit[NUM_AXIS];
 extern unsigned long max_acceleration_units_per_sq_second[NUM_AXIS]; // Use M201 to override by software
 extern float minimumfeedrate;
-extern float acceleration;         // Normal acceleration mm/s^2  THIS IS THE DEFAULT ACCELERATION for all moves. M204 SXXXX
-extern float retract_acceleration; //  mm/s^2   filament pull-pack and push-forward  while standing still in the other axis M204 TXXXX
-extern float travel_acceleration;  // Travel acceleration mm/s^2  THIS IS THE DEFAULT ACCELERATION for all NON printing moves. M204 MXXXX
-extern float max_xy_jerk; //speed than can be stopped at once, if i understand correctly.
+extern float acceleration;         // Normal acceleration mm/s^2  DEFAULT ACCELERATION for all printing moves. M204 SXXXX
+extern float retract_acceleration; // Retract acceleration mm/s^2 filament pull-back and push-forward while standing still in the other axes M204 TXXXX
+extern float travel_acceleration;  // Travel acceleration mm/s^2  DEFAULT ACCELERATION for all NON printing moves. M204 MXXXX
+extern float max_xy_jerk;          // The largest speed change requiring no acceleration
 extern float max_z_jerk;
 extern float max_e_jerk;
 extern float mintravelfeedrate;
 extern unsigned long axis_steps_per_sqr_second[NUM_AXIS];
 
-#ifdef AUTOTEMP
+#if ENABLED(AUTOTEMP)
   extern bool autotemp_enabled;
   extern float autotemp_max;
   extern float autotemp_min;

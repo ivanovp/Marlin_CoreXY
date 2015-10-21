@@ -52,8 +52,6 @@
   // (or build from command line)
 #endif
 
-#define AT90USB 1286  // Disable MarlinSerial etc.
-
 #define LARGE_FLASH        true
 
 #define X_STEP_PIN         28 //  0 Marlin
@@ -88,21 +86,21 @@
 #define TEMP_2_PIN         -1
 
 #define SDPOWER            -1
-#define SDCARDDETECT       -1   
+#define SD_DETECT_PIN      -1   
 #define SDSS               20 // 8
 #define LED_PIN             6
 #define PS_ON_PIN          27
 #define KILL_PIN           -1
 #define ALARM_PIN          -1
 
-#ifndef SDSUPPORT
+#if DISABLED(SDSUPPORT)
 // these pins are defined in the SD library if building with SD support
   #define SCK_PIN         21 // 9
   #define MISO_PIN        23 // 11
   #define MOSI_PIN        22 // 10
 #endif
 
-#ifdef ULTIPANEL
+#if ENABLED(ULTIPANEL)
   #define LCD_PINS_RS         8
   #define LCD_PINS_ENABLE     9
   #define LCD_PINS_D4        10

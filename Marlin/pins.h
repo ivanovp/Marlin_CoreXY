@@ -34,10 +34,10 @@
   #include "pins_SETHI.h"
 #elif MB(RAMPS_OLD)
   #include "pins_RAMPS_OLD.h"
-#elif MB(RAMPS_13_EFB) || MB(RAMPS_13_EEB) || MB(RAMPS_13_EFF) || MB(RAMPS_13_EEF)
+#elif MB(RAMPS_13_EFB)
+  #include "pins_RAMPS_13_EFB.h"
+#elif MB(RAMPS_13_EEB) || MB(RAMPS_13_EFF) || MB(RAMPS_13_EEF) || MB(RAMPS_13_SF)
   #include "pins_RAMPS_13.h"
-#elif MB(DUEMILANOVE_328P)
-  #include "pins_DUEMILANOVE_328P.h"
 #elif MB(GEN6)
   #include "pins_GEN6.h"
 #elif MB(GEN6_DELUXE)
@@ -52,8 +52,8 @@
   #include "pins_STB_11.h"
 #elif MB(AZTEEG_X1)
   #include "pins_AZTEEG_X1.h"
-#elif MB(MELZI_1284)
-  #include "pins_MELZI_1284.h"
+#elif MB(MELZI_MAKR3D)
+  #include "pins_MELZI_MAKR3D.h"
 #elif MB(AZTEEG_X3)
   #include "pins_AZTEEG_X3.h"
 #elif MB(AZTEEG_X3_PRO)
@@ -76,6 +76,8 @@
   #include "pins_PRINTRBOARD.h"
 #elif MB(BRAINWAVE)
   #include "pins_BRAINWAVE.h"
+#elif MB(BRAINWAVE_PRO)
+  #include "pins_BRAINWAVE_PRO.h"
 #elif MB(SAV_MKI)
   #include "pins_SAV_MKI.h"
 #elif MB(TEENSY2)
@@ -86,8 +88,8 @@
   #include "pins_GEN3_MONOLITHIC.h"
 #elif MB(MEGATRONICS)
   #include "pins_MEGATRONICS.h"
-#elif MB(MEGATRONICS_1)
-  #include "pins_MEGATRONICS_1.h"
+#elif MB(MINITRONICS)
+  #include "pins_MINITRONICS.h"
 #elif MB(MEGATRONICS_2)
   #include "pins_MEGATRONICS_2.h"
 #elif MB(MEGATRONICS_3)
@@ -98,22 +100,26 @@
   #include "pins_OMCA.h"
 #elif MB(RAMBO)
   #include "pins_RAMBO.h"
+#elif MB(MINIRAMBO)
+  #include "pins_MINIRAMBO.h"
 #elif MB(ELEFU_3)
   #include "pins_ELEFU_3.h"
 #elif MB(5DPRINT)
   #include "pins_5DPRINT.h"
 #elif MB(LEAPFROG)
   #include "pins_LEAPFROG.h"
-#elif MB(WITBOX)
-  #include "pins_WITBOX.h"
-#elif MB(HEPHESTOS)
-  #include "pins_HEPHESTOS.h"
 #elif MB(BAM_DICE)
   #include "pins_RAMPS_13.h"
 #elif MB(BAM_DICE_DUE)
   #include "pins_BAM_DICE_DUE.h"
 #elif MB(FELIX2)
   #include "pins_FELIX2.h"
+#elif MB(MKS_BASE)
+  #include "pins_MKS_BASE.h"
+#elif MB(RIGIDBOARD)
+  #include "pins_RIGIDBOARD.h"
+#elif MB(MEGACONTROLLER)
+  #include "pins_MEGACONTROLLER.h"
 #elif MB(99)
   #include "pins_99.h"
 #elif MB(CUSTOM)
@@ -139,6 +145,9 @@
       #define _E3_PINS E3_STEP_PIN, E3_DIR_PIN, E3_ENABLE_PIN, HEATER_3_PIN, analogInputToDigitalPin(TEMP_3_PIN),
     #endif
   #endif
+#elif ENABLED(Y_DUAL_STEPPER_DRIVERS) || ENABLED(Z_DUAL_STEPPER_DRIVERS)
+  #undef _E1_PINS
+  #define _E1_PINS E1_STEP_PIN, E1_DIR_PIN, E1_ENABLE_PIN,
 #endif
 
 #ifdef X_STOP_PIN
@@ -171,7 +180,7 @@
   #endif
 #endif
 
-#ifdef DISABLE_MAX_ENDSTOPS
+#if ENABLED(DISABLE_MAX_ENDSTOPS)
   #undef X_MAX_PIN
   #undef Y_MAX_PIN
   #undef Z_MAX_PIN
@@ -180,7 +189,7 @@
   #define Z_MAX_PIN          -1
 #endif
 
-#ifdef DISABLE_MIN_ENDSTOPS
+#if ENABLED(DISABLE_MIN_ENDSTOPS)
   #undef X_MIN_PIN
   #undef Y_MIN_PIN
   #undef Z_MIN_PIN
@@ -189,43 +198,56 @@
   #define Z_MIN_PIN          -1
 #endif
 
-#if defined(DISABLE_Z_PROBE_ENDSTOP) || !defined(Z_PROBE_ENDSTOP) // Allow code to compile regardless of Z_PROBE_ENDSTOP setting.
-  #define Z_PROBE_PIN        -1
+#if ENABLED(DISABLE_Z_MIN_PROBE_ENDSTOP) || DISABLED(Z_MIN_PROBE_ENDSTOP) // Allow code to compile regardless of Z_MIN_PROBE_ENDSTOP setting.
+  #undef Z_MIN_PROBE_PIN
+  #define Z_MIN_PROBE_PIN    -1
 #endif
 
-#ifdef DISABLE_XMAX_ENDSTOP
+#if ENABLED(DISABLE_XMAX_ENDSTOP)
   #undef X_MAX_PIN
   #define X_MAX_PIN          -1
 #endif
 
-#ifdef DISABLE_XMIN_ENDSTOP
+#if ENABLED(DISABLE_XMIN_ENDSTOP)
   #undef X_MIN_PIN 
   #define X_MIN_PIN          -1
 #endif
 
-#ifdef DISABLE_YMAX_ENDSTOP
+#if ENABLED(DISABLE_YMAX_ENDSTOP)
   #define Y_MAX_PIN          -1
 #endif
 
-#ifdef DISABLE_YMIN_ENDSTOP
+#if ENABLED(DISABLE_YMIN_ENDSTOP)
   #undef Y_MIN_PIN
   #define Y_MIN_PIN          -1
 #endif
 
-#ifdef DISABLE_ZMAX_ENDSTOP
+#if ENABLED(DISABLE_ZMAX_ENDSTOP)
   #undef Z_MAX_PIN
   #define Z_MAX_PIN          -1
 #endif
 
-#ifdef DISABLE_ZMIN_ENDSTOP
+#if ENABLED(DISABLE_ZMIN_ENDSTOP)
   #undef Z_MIN_PIN 
   #define Z_MIN_PIN          -1
+#endif
+
+#ifndef Y2_STEP_PIN
+  #define Y2_STEP_PIN      E1_STEP_PIN
+  #define Y2_DIR_PIN       E1_DIR_PIN
+  #define Y2_ENABLE_PIN    E1_ENABLE_PIN
+#endif
+
+#ifndef Z2_STEP_PIN
+  #define Z2_STEP_PIN      E1_STEP_PIN
+  #define Z2_DIR_PIN       E1_DIR_PIN
+  #define Z2_ENABLE_PIN    E1_ENABLE_PIN
 #endif
 
 #define SENSITIVE_PINS { 0, 1, \
                         X_STEP_PIN, X_DIR_PIN, X_ENABLE_PIN, X_MIN_PIN, X_MAX_PIN, \
                         Y_STEP_PIN, Y_DIR_PIN, Y_ENABLE_PIN, Y_MIN_PIN, Y_MAX_PIN, \
-                        Z_STEP_PIN, Z_DIR_PIN, Z_ENABLE_PIN, Z_MIN_PIN, Z_MAX_PIN, Z_PROBE_PIN, \
+                        Z_STEP_PIN, Z_DIR_PIN, Z_ENABLE_PIN, Z_MIN_PIN, Z_MAX_PIN, Z_MIN_PROBE_PIN, \
                         PS_ON_PIN, HEATER_BED_PIN, FAN_PIN, \
                         _E0_PINS _E1_PINS _E2_PINS _E3_PINS \
                         analogInputToDigitalPin(TEMP_BED_PIN) \

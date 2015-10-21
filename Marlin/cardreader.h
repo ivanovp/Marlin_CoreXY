@@ -1,7 +1,7 @@
 #ifndef CARDREADER_H
 #define CARDREADER_H
 
-#ifdef SDSUPPORT
+#if ENABLED(SDSUPPORT)
 
 #define MAX_DIR_DEPTH 10          // Maximum folder depth
 
@@ -27,6 +27,10 @@ public:
   void pauseSDPrint();
   void getStatus();
   void printingHasFinished();
+
+  #if ENABLED(LONG_FILENAME_HOST_SUPPORT)
+    void printLongPath(char *path);
+  #endif
 
   void getfilename(uint16_t nr, const char* const match=NULL);
   uint16_t getnrfilenames();
@@ -77,11 +81,11 @@ extern CardReader card;
 
 #define IS_SD_PRINTING (card.sdprinting)
 
-#if (SDCARDDETECT > -1)
-  #ifdef SDCARDDETECTINVERTED
-    #define IS_SD_INSERTED (READ(SDCARDDETECT) != 0)
+#if PIN_EXISTS(SD_DETECT)
+  #if ENABLED(SD_DETECT_INVERTED)
+    #define IS_SD_INSERTED (READ(SD_DETECT_PIN) != 0)
   #else
-    #define IS_SD_INSERTED (READ(SDCARDDETECT) == 0)
+    #define IS_SD_INSERTED (READ(SD_DETECT_PIN) == 0)
   #endif
 #else
   //No card detect line? Assume the card is inserted.

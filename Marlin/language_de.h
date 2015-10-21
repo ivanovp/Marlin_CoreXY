@@ -13,7 +13,7 @@
 //#define SIMULATE_ROMFONT
 #define DISPLAY_CHARSET_ISO10646_1
 
-#define WELCOME_MSG                         MACHINE_NAME " Bereit."
+#define WELCOME_MSG                         MACHINE_NAME " bereit."
 #define MSG_SD_INSERTED                     "SDKarte erkannt."
 #define MSG_SD_REMOVED                      "SDKarte entfernt."
 #define MSG_MAIN                            "Hauptmenü"
@@ -61,9 +61,9 @@
 #define MSG_PID_D                           "PID D"
 #define MSG_PID_C                           "PID C"
 #define MSG_ACC                             "A"
-#define MSG_VXY_JERK                        "V xy jerk"
-#define MSG_VZ_JERK                         "V z  jerk"
-#define MSG_VE_JERK                         "V e  jerk"
+#define MSG_VXY_JERK                        "V xy Ruck"
+#define MSG_VZ_JERK                         "V z  Ruck"
+#define MSG_VE_JERK                         "V e  Ruck"
 #define MSG_VMAX                            "V max " // space by purpose
 #define MSG_X                               "x"
 #define MSG_Y                               "y"
@@ -81,10 +81,8 @@
 #define MSG_MOTION                          "Bewegung"
 #define MSG_VOLUMETRIC                      "Filament"
 #define MSG_VOLUMETRIC_ENABLED              "E in mm³"
-#define MSG_FILAMENT_SIZE_EXTRUDER_0        "Filament D 1"
-#define MSG_FILAMENT_SIZE_EXTRUDER_1        "Filament D 2"
-#define MSG_FILAMENT_SIZE_EXTRUDER_2        "Filament D 3"
-#define MSG_CONTRAST                        "LCD contrast"
+#define MSG_FILAMENT_DIAM                   "Filament D"
+#define MSG_CONTRAST                        "LCD Kontrast"
 #define MSG_STORE_EPROM                     "EPROM speichern"
 #define MSG_LOAD_EPROM                      "EPROM laden"
 #define MSG_RESTORE_FAILSAFE                "Standardkonfig."
@@ -116,7 +114,7 @@
 #define MSG_INIT_SDCARD                     "SDKarte erkennen"// Manually initialize the SD-card via user interface
 #define MSG_CNG_SDCARD                      "SDKarte erkennen"// SD-card changed by user. For machines with no autocarddetect. Both send "M21"
 #define MSG_ZPROBE_OUT                      "Sensor ausserhalb"
-#define MSG_POSITION_UNKNOWN                "X/Y vor Z Homen."
+#define MSG_POSITION_UNKNOWN                "X/Y vor Z homen."
 #define MSG_ZPROBE_ZOFFSET                  "Z Offset"
 #define MSG_BABYSTEP_X                      "Babystep X"
 #define MSG_BABYSTEP_Y                      "Babystep Y"
@@ -124,9 +122,13 @@
 #define MSG_ENDSTOP_ABORT                   "Endstop Abbr. Ein"
 #define MSG_END_HOUR                        "Stunden"
 #define MSG_END_MINUTE                      "Minuten"
+#define MSG_HEATING                         "Aufheizen..."
+#define MSG_HEATING_COMPLETE                "Aufgeheizt"
+#define MSG_BED_HEATING                     "Bett aufheizen"
+#define MSG_BED_DONE                        "Bett aufgeheizt"
 
-#ifdef DELTA_CALIBRATION_MENU
-    #define MSG_DELTA_CALIBRATE             "Delta Kalibrieren"
+#if ENABLED(DELTA_CALIBRATION_MENU)
+    #define MSG_DELTA_CALIBRATE             "Delta kalibrieren"
     #define MSG_DELTA_CALIBRATE_X           "Kalibriere X"
     #define MSG_DELTA_CALIBRATE_Y           "Kalibriere Y"
     #define MSG_DELTA_CALIBRATE_Z           "Kalibriere Z"

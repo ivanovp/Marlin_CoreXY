@@ -18,7 +18,7 @@
  * <http://www.gnu.org/licenses/>.
  */
 #include "Marlin.h"
-#ifdef SDSUPPORT
+#if ENABLED(SDSUPPORT)
 
 #ifndef SdFatUtil_h
 #define SdFatUtil_h
@@ -42,7 +42,7 @@ namespace SdFatUtil {
 }
 
 using namespace SdFatUtil;  // NOLINT
-#endif  // #define SdFatUtil_h
+#endif  //#define SdFatUtil_h
 
 
 #endif
