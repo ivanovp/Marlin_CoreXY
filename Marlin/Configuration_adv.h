@@ -213,7 +213,7 @@
 #define X_HOME_BUMP_MM 5
 #define Y_HOME_BUMP_MM 5
 #define Z_HOME_BUMP_MM 2
-#define HOMING_BUMP_DIVISOR {2, 2, 8}  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
+#define HOMING_BUMP_DIVISOR {2, 2, 4}  // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 //#define QUICK_HOME  //if this is defined, if both x and y are to be homed, a diagonal move will be performed initially.
 
 // When G28 is called, this option will make Y home before X
@@ -526,6 +526,8 @@ const unsigned int dropsegments=5; //everything with less than this number of st
  * enable this section if you have L6470  motor drivers. 
  * you need to import the L6470 library into the arduino IDE for this
  ******************************************************************************/
+
+// @section l6470
 
 //#define HAVE_L6470DRIVER
 #if ENABLED(HAVE_L6470DRIVER)

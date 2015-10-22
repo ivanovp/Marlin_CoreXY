@@ -56,7 +56,7 @@
 #define BOARD_MKS_BASE          40   // MKS BASE 1.0
 #define BOARD_BAM_DICE          401  // 2PrintBeta BAM&DICE with STK drivers
 #define BOARD_BAM_DICE_DUE      402  // 2PrintBeta BAM&DICE Due with STK drivers
-#define BOARD_CUSTOM            9999 // 2PrintBeta BAM&DICE Due with STK drivers
+#define BOARD_CUSTOM            9999 // Home-made Arduino shield
 
 #define BOARD_99                99   // This is in pins.h but...?
 

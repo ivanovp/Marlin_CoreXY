@@ -39,7 +39,7 @@
 
 #define E0_STEP_PIN        14
 #define E0_DIR_PIN         15
-#define E0_ENABLE_PIN      -1
+#define E0_ENABLE_PIN      12 // NOT SOLDERED!
 
 #define E1_STEP_PIN        -1
 #define E1_DIR_PIN         -1
