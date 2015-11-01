@@ -214,9 +214,9 @@ Here are some standard links for getting your machine calibrated:
   #define  DEFAULT_Kd 83.41
 
   // Ultimaker
-  #define  DEFAULT_Kp 22.2
-  #define  DEFAULT_Ki 1.08
-  #define  DEFAULT_Kd 114
+  //#define  DEFAULT_Kp 22.2
+  //#define  DEFAULT_Ki 1.08
+  //#define  DEFAULT_Kd 114
 
   // MakerGear
   //#define  DEFAULT_Kp 7.0
@@ -590,7 +590,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 
 // default settings
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {6.00f * 2.0f, 4.734f * 8.0f, 320.0f, 46.975f }  // default steps per unit for Ultimaker
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {6.211f * 2.0f, 4.7625f * 8.0f, 320.0f, 46.975f }  // default steps per unit for Peter's 3D printer
 #define DEFAULT_MAX_FEEDRATE          {100, 100, 6, 5}    // (mm/sec)
 //#define DEFAULT_MAX_FEEDRATE          {100, 58, 6, 5}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {500,500,10,100000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
