@@ -209,9 +209,9 @@ Here are some standard links for getting your machine calibrated:
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
   // Peter Ivanov's printer
-  #define  DEFAULT_Kp 17.86
-  #define  DEFAULT_Ki 0.96
-  #define  DEFAULT_Kd 83.41
+  #define  DEFAULT_Kp 18.05
+  #define  DEFAULT_Ki 0.98
+  #define  DEFAULT_Kd 83.39
 
   // Ultimaker
   //#define  DEFAULT_Kp 22.2
