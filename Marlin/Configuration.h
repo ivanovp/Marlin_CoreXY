@@ -164,11 +164,11 @@ Here are some standard links for getting your machine calibrated:
 // The minimal temperature defines the temperature below which the heater will not be enabled It is used
 // to check that the wiring to the thermistor is not broken.
 // Otherwise this would lead to the heater being powered on all the time.
-#define HEATER_0_MINTEMP -5
+#define HEATER_0_MINTEMP -10
 #define HEATER_1_MINTEMP 0
 #define HEATER_2_MINTEMP 0
 #define HEATER_3_MINTEMP 0
-#define BED_MINTEMP -5
+#define BED_MINTEMP -10
 
 // When temperature exceeds max temp, your heater will be switched off.
 // This feature exists to protect your hotend from overheating accidentally, but *NOT* from thermistor short/failure!
@@ -287,7 +287,7 @@ Here are some standard links for getting your machine calibrated:
 //if PREVENT_DANGEROUS_EXTRUDE is on, you can still disable (uncomment) very long bits of extrusion separately.
 #define PREVENT_LENGTHY_EXTRUDE
 
-#define EXTRUDE_MINTEMP 170
+#define EXTRUDE_MINTEMP 150
 #define EXTRUDE_MAXLENGTH (X_MAX_LENGTH+Y_MAX_LENGTH) //prevent extrusion of very large distances.
 
 //===========================================================================
@@ -595,12 +595,15 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 #define HOMING_FEEDRATE {50*60, 50*60, 4*60, 0}  // set the homing speeds (mm/min)
 
 // default settings
-
+// Z
+// 200 steps/revolution motor, 1/16 microstepping, Tr12x3
+// 200.0 * 16 / 3 mm = 1066.67
 // Extruder: (200.0f * 16) * (47 / 9) / (7 * 3.14159f) = 759.9
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.0f, 80.0f, 2560.0f, 759.9 * 1.35 }  // default steps per unit for Peter's 3D printer
-#define DEFAULT_MAX_FEEDRATE          {300, 300, 10, 5}    // (mm/sec)
-#define DEFAULT_MAX_ACCELERATION      {3000,3000,10,100000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
+//                                       X      Y      Z         E0
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.0f, 80.0f, 1066.67f, 1500.0 }  // default steps per unit for Peter's 3D printer
+#define DEFAULT_MAX_FEEDRATE          {300, 300, 4.5, 5}    // (mm/sec)
+#define DEFAULT_MAX_ACCELERATION      {3000,3000,5,100000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 //#define DEFAULT_MAX_ACCELERATION      {500,500,10,100000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 
 #define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration in mm/s^2 for printing moves
@@ -719,7 +722,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 // http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
 //
 // ==> REMEMBER TO INSTALL U8glib to your ARDUINO library folder: http://code.google.com/p/u8glib/wiki/u8glib
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
+///////////////////////////////#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
 
 // The RepRapWorld REPRAPWORLD_KEYPAD v1.1
 // http://reprapworld.com/?products_details&products_id=202&cPath=1591_1626
