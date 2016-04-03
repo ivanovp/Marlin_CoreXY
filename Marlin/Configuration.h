@@ -601,7 +601,7 @@ const bool Z_MIN_PROBE_ENDSTOP_INVERTING = false; // set to true to invert the l
 // Extruder: (200.0f * 16) * (47 / 9) / (7 * 3.14159f) = 759.9
 
 //                                       X      Y      Z         E0
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.0f, 80.0f, 1066.67f, 1500.0 }  // default steps per unit for Peter's 3D printer
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {80.0f, 80.0f, 1066.67f, 759.9f * 1.35 }  // default steps per unit for Peter's 3D printer
 #define DEFAULT_MAX_FEEDRATE          {300, 300, 4.5, 5}    // (mm/sec)
 #define DEFAULT_MAX_ACCELERATION      {3000,3000,5,100000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
 //#define DEFAULT_MAX_ACCELERATION      {500,500,10,100000}    // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for Skeinforge 40+, for older versions raise them a lot.
