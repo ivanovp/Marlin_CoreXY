@@ -315,9 +315,9 @@
 
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
   // Peter Ivanov's RepRap-XY printer
-  #define  DEFAULT_Kp 20.00
-  #define  DEFAULT_Ki 1.09
-  #define  DEFAULT_Kd 91.41
+  #define  DEFAULT_Kp 10.73
+  #define  DEFAULT_Ki 0.44
+  #define  DEFAULT_Kd 65.42
 
   // Peter Ivanov's old printer
   //#define  DEFAULT_Kp 18.05
