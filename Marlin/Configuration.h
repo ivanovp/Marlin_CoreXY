@@ -131,10 +131,8 @@
 // The following define selects which electronics board you have.
 // Please choose the name from boards.h that matches your setup
 #ifndef MOTHERBOARD
-  #define MOTHERBOARD BOARD_RAMPS_14_EEF
+  #define MOTHERBOARD BOARD_RAMPS_14_EFB
 #endif
-// Bed is switched by external relay
-#define HEATER_BED_PIN 63
 
 // Optional custom name for your RepStrap or other custom machine
 // Displayed in the LCD "Ready" message
@@ -643,7 +641,7 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2[, E3[, E4]]]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 8, 7.5 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 8, 5 }
 
 /**
  * Default Max Acceleration (change/s) change = mm/s
