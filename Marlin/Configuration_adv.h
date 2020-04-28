@@ -312,12 +312,16 @@
   #endif
 #endif
 
-//#define Y_DUAL_STEPPER_DRIVERS
+#define Y_DUAL_STEPPER_DRIVERS
 #if ENABLED(Y_DUAL_STEPPER_DRIVERS)
-  #define Y2_STEP_PIN   58 
-  #define Y2_DIR_PIN    57
-  #define Y2_ENABLE_PIN 59
-  #define INVERT_Y2_VS_Y_DIR false   // Set 'true' if Y motors should rotate in opposite directions
+  #define Y2_STEP_PIN        36
+  #define Y2_DIR_PIN         34
+  #define Y2_ENABLE_PIN      30
+  //#define Y2_STEP_PIN   58
+  //#define Y2_DIR_PIN    57
+  //#define Y2_ENABLE_PIN 59
+  //#define Y2_ENABLE_PIN 59
+  #define INVERT_Y2_VS_Y_DIR true   // Set 'true' if Y motors should rotate in opposite directions
   //#define Y_DUAL_ENDSTOPS
   #if ENABLED(Y_DUAL_ENDSTOPS)
     #define Y2_USE_ENDSTOP _YMAX_
