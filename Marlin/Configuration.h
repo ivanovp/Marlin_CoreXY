@@ -385,7 +385,7 @@
   //#define  DEFAULT_Kd 65.42
 
   // Peter Ivanov's RepRap-XY printer, J-head MK V
-  // Note: PID_MAX was decreased to 128. Otherwise PID autotune failed with "Temperature too high" 
+  // Note: PID_MAX was decreased to 128. Otherwise PID autotune failed with "Temperature too high"
   // error message.
   #define  DEFAULT_Kp 9.91
   #define  DEFAULT_Ki 0.45
@@ -508,7 +508,7 @@
 
 // Uncomment one of these options to enable CoreXY, CoreXZ, or CoreYZ kinematics
 // either in the usual order or reversed
-#define COREXY
+//#define COREXY
 //#define COREXZ
 //#define COREYZ
 //#define COREYX
@@ -876,8 +876,8 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR false
-#define INVERT_Y_DIR false
+#define INVERT_X_DIR true
+#define INVERT_Y_DIR true
 #define INVERT_Z_DIR false
 
 // @section extruder
