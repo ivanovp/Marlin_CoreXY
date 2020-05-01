@@ -314,6 +314,7 @@
 
 #define Y_DUAL_STEPPER_DRIVERS
 #if ENABLED(Y_DUAL_STEPPER_DRIVERS)
+  // Y2 is connected to second extruder! (E1)
   #define Y2_STEP_PIN        36
   #define Y2_DIR_PIN         34
   #define Y2_ENABLE_PIN      30
